@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kanban - Juergen</title>
+
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" rel="stylesheet">
+
+    <!--javascript-->
+    <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/kanban-widget-v0.1.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready( function () {
+            var _kanbanWidget = $('#kanban-chart').kanban();
+
+            $('#createNew').click(function (){
+                _kanbanWidget.kanban('createNewTask');
+                hideInitial();
+            });
+
+            $('#editTask').click(function (){
+                hideInitial();
+
+                $(this).hide();
+                _kanbanWidget.kanban('editTask');
+                $('#cancelEdit').show();
+            });
+
+            $('#cancelEdit').click(function (){
+                hideInitial();
+            });
+
+            $('#removeTask').click(function (){
+                hideInitial();
+
+                $(this).hide();                
+                _kanbanWidget.kanban('removeTask');
+                $('#cancelRemove').show();
+            });
+
+            $('#cancelRemove').click(function (){
+                hideInitial();
+            });
+
+            $('#removeAll').click(function (){
+                _kanbanWidget.kanban('removeAll');
+            });
+
+            function hideInitial(){
+                $('#cancelEdit').hide();
+                $('.task .edit').hide();
+                $('#removeTask').show();
+
+                $('#cancelRemove').hide();
+                $('.task .delete').hide();
+                $('#editTask').show();                
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="kanban-container">
+        <div class="col-sm-3 kanban-sidebar">
+            <img src="images/anchor.svg" alt="" class="img-responsive img-circle">
+            <br>
+            <button id="createNew" class="btn btn-success btn-block">
+                Create New Task
+            </button>
+            <br>
+            <button id="editTask" class="btn btn-default btn-block">
+                Edit Task
+            </button>
+            <button id="cancelEdit" class="btn btn-warning btn-block">
+                Cancel
+            </button>
+            <br><br>
+            <button id="removeTask" class="btn btn-default btn-block">
+                Remove Tasks
+            </button>
+            <button id="removeAll" class="btn btn-danger btn-block">
+                Remove All Tasks
+            </button>
+            <br>
+            <button id="cancelRemove" class="btn btn-warning btn-block">
+                Cancel
+            </button>
+
+            <div class="footer">
+                Designed and built by Juergen Pona
+                <br>
+                © 2016
+            </div>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 kanban-area">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>ARIUM <small>Kanban</small></h1>
+                    <hr>
+                </div>
+            </div>
+            <div id="kanban-chart" class="row">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

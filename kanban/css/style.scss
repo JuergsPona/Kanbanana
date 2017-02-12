@@ -1,0 +1,61 @@
+.kanban-container{
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+
+    .btn{
+        outline: none;
+        
+        &:focus{
+            outline: none;
+        }
+    }
+
+    .kanban-sidebar{
+        background: #212121;
+        height: 100%;
+        position: fixed;
+        padding: 20px;
+
+        #cancelRemove{
+            display: none;
+        }
+
+        #cancelEdit{
+            display: none;
+        }
+
+        .footer{
+            color: #9E9E9E;
+            position: absolute;
+            bottom: 0;
+            padding: 20px;
+        }
+    }
+
+    .kanban-area{
+        h1, h3{
+            font-weight: 100;
+        }
+
+        .swim-lane{
+            min-height: 300px;
+
+            .task{
+                box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.2);
+                padding: 5px 20px 10px 20px;
+                margin-bottom: 20px;
+                background: #fff;
+
+                div{
+                    padding-bottom: 5px;
+                    overflow: hidden;
+                    word-wrap: break-word;
+                }
+            }
+        }
+    }
+}
+
+.warning{
+    border: 2px solid #FFC107;
+}
